@@ -3,11 +3,12 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"os"
 	"strings"
 )
 
 func readlines(filepath string) []byte {
-	content, _ := ioutil.ReadFile("./rosalind_dna.txt")
+	content, _ := ioutil.ReadFile(filepath)
 	return content
 }
 
@@ -25,7 +26,7 @@ func solution_DNA(dna []byte, output_order string) []int {
 }
 
 func main() {
-	dna := readlines("nil")
+	dna := readlines(os.Args[1])
 	output_order := "ACGT"
 	solution := solution_DNA(dna, output_order)
 	fmt.Println(strings.Trim(fmt.Sprint(solution), "[]"))
